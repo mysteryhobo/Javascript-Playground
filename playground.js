@@ -1,4 +1,3 @@
-
 'use strict';
 var test = require('./TestClass').testClass
 var test = new test('testName')
@@ -235,4 +234,65 @@ TestNewObject3.prototype.test = 'test'
 console.log('NEW OBJECT.__proto__', TestNewObject3.prototype)
 console.log('FIRST NAME: ', createdObject2.test)
 
+console.log('----------------------------------------------')
 
+const testObject2 = {};
+// console.log(testObject.test) //throws error
+testObject2.test = undefined
+console.log(testObject2.test) //doesn't throw error
+
+
+console.log('----------------------------------------------')
+
+// functions in methods:
+
+//value2 = 'notwow'  //fails in strict mode
+
+// console.log(global.value2)
+
+// const testFunc2 = function() {
+//   console.log('VALUE: ', this.value2)
+// }
+
+// const testObject3 = {
+//   value2: 'wow',
+//   method: function(fn) {
+//     const testFunc3 = function () {
+//       console.log('VALUE2: ', this.value2)
+//     }
+//     fn()
+//     testFunc3()
+//   }
+// }
+
+// testObject3.method(testFunc2)
+
+var dictionary2 = {
+  greeting: 'hello',
+  farewell: 'goodbye',
+  sayHi: function sayHi(name) {
+    console.log(this.greeting, name);
+  },
+  sayGoodBye: function sayGoodBye(name) {
+    console.log(undefined.farewell, name);
+  },
+  whatsThis: function whatsThis() {
+    console.log('WHATS THIS: ', undefined);
+  }
+};
+
+dictionary2.sayHi('peter');
+dictionary2.sayHi.call({ greeting: 'wasup' }, 'Jimmy');
+dictionary2.sayHi.apply({ greeting: 'bro?' }, ['Timmy']);
+dictionary2.sayHi.bind({ greeting: 'Duuuuuuude?' })('Robby');
+
+console.log('----------------------------------------------');
+
+dictionary2.sayGoodBye('peter');
+dictionary2.sayGoodBye.call({ farewell: 'get Lost' }, 'Jimmy');
+dictionary2.sayGoodBye.apply({ farewell: 'bro?' }, ['Timmy']);
+dictionary2.sayGoodBye.bind({ farewell: 'Duuuuuuude?' })('Robby');
+
+console.log('----------------------------------------------');
+
+dictionary2.whatsThis();
