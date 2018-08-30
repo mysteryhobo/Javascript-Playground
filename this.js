@@ -234,3 +234,43 @@ console.log('*********************  Senario 1 (NON STRICT)  ********************
   }
 
   testObj.method()
+
+console.log('')
+console.log('********************************************************************')
+console.log('************************  CALL APPLY BIND *************************')
+console.log('********************************************************************\n')
+
+var dictionary = {
+  greeting: 'hello',
+  farewell: 'goodbye',
+  sayHi: function (name) {
+    console.log(this.greeting, name);
+  },
+  sayGoodBye: (name) => {
+    console.log(this.farewell, name);
+  },
+  whatsThis: function whatsThis() {
+    console.log('WHATS THIS: ', this);
+  }
+};
+
+dictionary.whatsThis();
+
+console.log('\n**************************  Senario 1  **************************\n')
+console.log('Basic method defined in object')
+
+dictionary.sayHi('peter');
+dictionary.sayHi.call({ greeting: 'wasup' }, 'Jimmy');
+dictionary.sayHi.apply({ greeting: 'bro?' }, ['Timmy']);
+dictionary.sayHi.bind({ greeting: 'Duuuuuuude?' })('Robby');
+
+console.log('\n**************************  Senario 2  **************************\n')
+console.log('Arrow method defined in object')
+
+this.farewell = 'LEAVE'
+
+dictionary.sayGoodBye('peter');
+dictionary.sayGoodBye.call({ farewell: 'get Lost' }, 'Jimmy');
+dictionary.sayGoodBye.apply({ farewell: 'bro?' }, ['Timmy']);
+dictionary.sayGoodBye.bind({ farewell: 'Duuuuuuude?' })('Robby');
+
