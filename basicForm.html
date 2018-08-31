@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function handleSumit() {
+        var firstName = document.getElementById("basicForm").elements.namedItem('firstName').value;
+        var lastName = document.getElementById("basicForm").elements.namedItem('lastName').value;
+        alert(firstName + ' ' + lastName)
+      }
+    </script>
+  </head>
+  <body>
+    <form id='basicForm'>
+      FirstName: </br>
+      <input name='firstName' type='text' value='peter'/> </br>
+      LastName: </br>
+      <input name='lastName' type='text' value='little'/></br>
+      <input type='submit' onclick="handleSumit()"/>
+    </form>
+  </body>
+</html>

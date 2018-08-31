@@ -11,6 +11,13 @@ const parent = {
 const child1 = Object.create(parent)
 const child2 = Object.assign({}, parent)
 
+console.log('CHILD1: ', child1)
+child1.woah = 'woah'
+console.log('CHILD1: ', child1)
+parent.newValue = 'woah'
+console.log('CHILD1: ', child1.__proto__)
+
+
 console.log('CHILD1.test: ', child1.test)
 console.log('CHILD2.test: ', child2.test)
 
@@ -52,7 +59,7 @@ console.log('************************  FUNCTION CONSTRUCTOR  *******************
 console.log('********************************************************************\n')
 
 function Person (firstname) {
-  // dont do anything with this for now
+  this.bam = 'wow'
 }
 
 Person.prototype.test = 'test'
@@ -60,6 +67,9 @@ Person.prototype.thing = {thing: 'thing'}
 
 const person1 = new Person('Morty')
 const person2 = new Person('Morty')
+
+console.log('PERSON1: ', person1)
+console.log('PERSON2: ', person2)
 
 console.log('PERSON1.test: ', person1.test)
 console.log('PERSON2.test: ', person2.test)
@@ -110,4 +120,14 @@ console.log(terrance.test)
 Guy.prototype.test = 'test'
 console.log(terrance.test)
 
+
+class Morty {
+  constructor (name) {
+    this.name = name //all Morty's have their own name
+  }
+
+  saySomethingStupid() { // all Morty's reference this function on the prototype
+    console.log("aww geez Rick, I don't know if this is a good idea")
+  }
+}
 
